@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/* Savdo CRM (демо): светлый рабочий интерфейс, фиолетовый акцент, тёмная боковая панель */
+@theme {
+  --color-bg: #f6f5fa;
+  --color-surface: #ffffff;
+  --color-ink: #1d1a26;
+  --color-muted: #6b6578;
+  --color-subtle: #9a94a8;
+  --color-line: #e9e6f0;
+  --color-brand: #7c3aed;
+  --color-brand-dark: #6425d0;
+  --color-brand-soft: #f1ebfe;
+  --color-side: #1d1a26;
+  --color-ok: #10b981;
+  --color-warn: #f59e0b;
+  --color-bad: #ef4444;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html,
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-tap-highlight-color: transparent;
+  }
+  ::selection {
+    background-color: rgb(124 58 237 / 0.2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@utility panel {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 1.25rem;
+}
+
+@utility input {
+  width: 100%;
+  border: 1px solid var(--color-line);
+  border-radius: 0.8rem;
+  background-color: var(--color-surface);
+  padding: 0.6rem 0.9rem;
+  font-size: 0.95rem;
+  &:focus {
+    outline: none;
+    border-color: var(--color-brand);
+    box-shadow: 0 0 0 4px rgb(124 58 237 / 0.14);
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@utility animate-pop {
+  animation: pop 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+@utility animate-slide-in {
+  animation: slide-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Подсветка только что прилетевшей заявки */
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(124 58 237 / 0);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgb(124 58 237 / 0.25);
+  }
+}
+@utility animate-glow {
+  animation: glow 1.6s ease-in-out 3;
+}
