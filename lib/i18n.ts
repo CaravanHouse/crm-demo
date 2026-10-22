@@ -10,5 +10,3 @@ export type L = { ru: string; uz: string };
 
 export const tr = (text: L, lang: Locale) => text[lang];
 
-/** Цена в сумах с пробелами: 150 000 */
-export const sum = (value: number) => value.toLocaleString("ru-RU").replace(/ /g, " ");

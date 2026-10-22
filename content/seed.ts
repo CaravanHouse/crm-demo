@@ -75,7 +75,7 @@ const C = (id: string, ru: string, uz: string, phone: string, dRu: string, dUz: 
   tag: { ru: tRu, uz: tUz },
 });
 
-export const seedClients: Client[] = [
+const seedClients: Client[] = [
   C("c1", "Азиза Каримова", "Aziza Karimova", "+998 90 111 22 33", "Юнусабад", "Yunusobod", "instagram", "Частный клиент", "Xususiy mijoz"),
   C("c2", "Компания «Демо Офис»", "«Demo Ofis» kompaniyasi", "+998 71 200 10 10", "Мирабад", "Mirobod", "site", "B2B", "B2B"),
   C("c3", "Тимур Рашидов", "Timur Rashidov", "+998 93 444 55 66", "Чиланзар", "Chilonzor", "telegram", "Частный клиент", "Xususiy mijoz"),
@@ -129,7 +129,6 @@ const sourceText: Record<SourceId, L> = {
   call: { ru: "Входящий звонок", uz: "Kiruvchi qoʻngʻiroq" },
   referral: { ru: "Рекомендация клиента", uz: "Mijoz tavsiyasi" },
 };
-export const sourceLog = sourceText;
 
 const ago = (now: Date, days: number, hours = 0) => new Date(now.getTime() - (days * 24 + hours) * 3600_000).toISOString();
 
